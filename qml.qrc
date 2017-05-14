@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/">
+        <file>ui/Keyboard.qml</file>
+        <file>ui/KeyboardForm.ui.qml</file>
+        <file>ui/main.qml</file>
+        <file>ui/qtquickcontrols2.conf</file>
+    </qresource>
+</RCC>
