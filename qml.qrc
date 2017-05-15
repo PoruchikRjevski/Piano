@@ -1,8 +1,8 @@
 <RCC>
     <qresource prefix="/">
-        <file>ui/Keyboard.qml</file>
-        <file>ui/KeyboardForm.ui.qml</file>
         <file>ui/main.qml</file>
         <file>ui/qtquickcontrols2.conf</file>
+        <file>ui/PianoKey.qml</file>
+        <file>ui/PianoKeyboard.qml</file>
     </qresource>
 </RCC>

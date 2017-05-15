@@ -4,9 +4,8 @@ import QtQuick.Layouts 1.0
 
 Item {
     visible: true
-    width: 640
+    width: 560
     height: 480
-//    title: qsTr("Hello World")
 
     RowLayout {
         anchors.rightMargin: 0
@@ -15,15 +14,12 @@ Item {
         anchors.topMargin: 0
         anchors.fill: parent
 
-        Keyboard {
-            id: keyboard
+        PianoKeyboard {
+            id: mainOctav
             visible: true
+            focus: true
 
-            anchors.top: parent.top;
-            anchors.bottom: parent.bottom;
-            anchors.left: parent.left;
-            anchors.right: parent.right;
-
+            anchors.fill: parent;
         }
     }
 }
