@@ -1,9 +1,19 @@
 import QtQuick 2.7
 import QtQuick.Controls 2.1
 import QtQuick.Layouts 1.0
+import sound.gen 1.0
 
 Rectangle {
-    property int octave: generator.FIRST_OCTAVE
+    id: keyboard
+//    property int octave: Enums.FIRST_OCTAVE
+
+    function setOctave(octave) {
+        generator.setCurrentOctave(octave)
+    }
+
+    Component.onCompleted: {
+        keyboard.setOctave(Enums.FIRST_OCTAVE)
+    }
 
     RowLayout {
         anchors.fill: parent
@@ -13,6 +23,7 @@ Rectangle {
             Layout.fillHeight: true
 
             name: "C-[a]"
+            note: Enums.NOTE_C
 
             anchors.left: parent.left
             anchors.top: parent.top
@@ -23,6 +34,7 @@ Rectangle {
             Layout.fillHeight: true
 
             name: "D-[s]"
+            note: Enums.NOTE_D
 
             anchors.left: noteCKey.right
             anchors.top: parent.top
@@ -33,6 +45,7 @@ Rectangle {
             Layout.fillHeight: true
 
             name: "E-[d]"
+            note: Enums.NOTE_E
 
             anchors.left: noteDKey.right
             anchors.top: parent.top
@@ -43,6 +56,7 @@ Rectangle {
             Layout.fillHeight: true
 
             name: "F-[f]"
+            note: Enums.NOTE_F
 
             anchors.left: noteEKey.right
             anchors.top: parent.top
@@ -53,6 +67,7 @@ Rectangle {
             Layout.fillHeight: true
 
             name: "G-[g]"
+            note: Enums.NOTE_G
 
             anchors.left: noteFKey.right
             anchors.top: parent.top
@@ -63,16 +78,18 @@ Rectangle {
             Layout.fillHeight: true
 
             name: "A-[h]"
+            note: Enums.NOTE_A
 
             anchors.left: noteGKey.right
             anchors.top: parent.top
             anchors.bottom: parent.bottom
         }
         PianoKey {
-            id: noteHKey
+            id: noteBKey
             Layout.fillHeight: true
 
-            name: "H-[j]"
+            name: "B-[j]"
+            note: Enums.NOTE_B
 
             anchors.left: noteAKey.right
             anchors.top: parent.top
@@ -83,6 +100,7 @@ Rectangle {
             Layout.fillHeight: true
 
             name: "C#-[w]"
+            note: Enums.NOTE_C_SH
             width: 60
             color: "black"
             nameClr: "white"
@@ -99,6 +117,7 @@ Rectangle {
             Layout.fillHeight: true
 
             name: "D#-[e]"
+            note: Enums.NOTE_D_SH
             width: 60
             color: "black"
             nameClr: "white"
@@ -114,6 +133,7 @@ Rectangle {
             Layout.fillHeight: true
 
             name: "F#-[r]"
+            note: Enums.NOTE_F_SH
             width: 60
             color: "black"
             nameClr: "white"
@@ -129,6 +149,7 @@ Rectangle {
             Layout.fillHeight: true
 
             name: "G#-[t]"
+            note: Enums.NOTE_G_SH
             width: 60
             color: "black"
             nameClr: "white"
@@ -144,6 +165,7 @@ Rectangle {
             Layout.fillHeight: true
 
             name: "A#-[y]"
+            note: Enums.NOTE_A_SH
             width: 60
             color: "black"
             nameClr: "white"
@@ -177,7 +199,7 @@ Rectangle {
             noteAKey.onPressedKey()
         } break
         case Qt.Key_J: {
-            noteHKey.onPressedKey()
+            noteBKey.onPressedKey()
         } break
         case Qt.Key_W: {
             noteDiez1.onPressedKey()
@@ -217,7 +239,7 @@ Rectangle {
             noteAKey.onReleasedKey()
         } break
         case Qt.Key_J: {
-            noteHKey.onReleasedKey()
+            noteBKey.onReleasedKey()
         } break
         case Qt.Key_W: {
             noteDiez1.onReleasedKey()

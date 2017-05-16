@@ -1,12 +1,13 @@
 import QtQuick 2.7
+import sound.gen 1.0
 
 Rectangle {
     property string name: "note"
     property string nameClr: "black"
     property string borderClr: "black"
-    property real noteNum: generator.UNDEF
+    property int note: Enums.UNDEF
 
-    id: note
+    id: key
     width: 80
     color: "white"
     border.width: 1
@@ -28,7 +29,7 @@ Rectangle {
         anchors.bottomMargin += 5
         noteText.anchors.bottomMargin += 1
 
-        generator.testMethod(0.0)
+        generator.playNote(note)
     }
     function onReleasedKey() {
         anchors.bottomMargin -= 5
@@ -38,10 +39,10 @@ Rectangle {
     MouseArea {
         anchors.fill: parent
         onPressed: {
-            note.onPressedKey()
+            key.onPressedKey()
         }
         onReleased: {
-            note.onReleasedKey()
+            key.onReleasedKey()
         }
     }
 }
