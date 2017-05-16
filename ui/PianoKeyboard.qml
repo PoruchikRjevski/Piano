@@ -1,18 +1,18 @@
 import QtQuick 2.7
-import QtQuick.Controls 2.0
+import QtQuick.Controls 2.1
 import QtQuick.Layouts 1.0
 
 Rectangle {
-    RowLayout {
-        focus: true
+    property int octave: generator.FIRST_OCTAVE
 
+    RowLayout {
         anchors.fill: parent
 
         PianoKey {
             id: noteCKey
             Layout.fillHeight: true
 
-            name: "C"
+            name: "C-[a]"
 
             anchors.left: parent.left
             anchors.top: parent.top
@@ -22,7 +22,7 @@ Rectangle {
             id: noteDKey
             Layout.fillHeight: true
 
-            name: "D"
+            name: "D-[s]"
 
             anchors.left: noteCKey.right
             anchors.top: parent.top
@@ -32,7 +32,7 @@ Rectangle {
             id: noteEKey
             Layout.fillHeight: true
 
-            name: "E"
+            name: "E-[d]"
 
             anchors.left: noteDKey.right
             anchors.top: parent.top
@@ -42,7 +42,7 @@ Rectangle {
             id: noteFKey
             Layout.fillHeight: true
 
-            name: "F"
+            name: "F-[f]"
 
             anchors.left: noteEKey.right
             anchors.top: parent.top
@@ -52,7 +52,7 @@ Rectangle {
             id: noteGKey
             Layout.fillHeight: true
 
-            name: "G"
+            name: "G-[g]"
 
             anchors.left: noteFKey.right
             anchors.top: parent.top
@@ -62,7 +62,7 @@ Rectangle {
             id: noteAKey
             Layout.fillHeight: true
 
-            name: "A"
+            name: "A-[h]"
 
             anchors.left: noteGKey.right
             anchors.top: parent.top
@@ -72,7 +72,7 @@ Rectangle {
             id: noteHKey
             Layout.fillHeight: true
 
-            name: "H"
+            name: "H-[j]"
 
             anchors.left: noteAKey.right
             anchors.top: parent.top
@@ -82,7 +82,7 @@ Rectangle {
             id: noteDiez1
             Layout.fillHeight: true
 
-            name: "#"
+            name: "C#-[w]"
             width: 60
             color: "black"
             nameClr: "white"
@@ -98,7 +98,7 @@ Rectangle {
             id: noteDiez2
             Layout.fillHeight: true
 
-            name: "#"
+            name: "D#-[e]"
             width: 60
             color: "black"
             nameClr: "white"
@@ -113,7 +113,7 @@ Rectangle {
             id: noteDiez3
             Layout.fillHeight: true
 
-            name: "#"
+            name: "F#-[r]"
             width: 60
             color: "black"
             nameClr: "white"
@@ -128,7 +128,7 @@ Rectangle {
             id: noteDiez4
             Layout.fillHeight: true
 
-            name: "#"
+            name: "G#-[t]"
             width: 60
             color: "black"
             nameClr: "white"
@@ -143,7 +143,7 @@ Rectangle {
             id: noteDiez5
             Layout.fillHeight: true
 
-            name: "#"
+            name: "A#-[y]"
             width: 60
             color: "black"
             nameClr: "white"

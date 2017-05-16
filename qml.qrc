@@ -4,5 +4,6 @@
         <file>ui/qtquickcontrols2.conf</file>
         <file>ui/PianoKey.qml</file>
         <file>ui/PianoKeyboard.qml</file>
+        <file>ui/Controls.qml</file>
     </qresource>
 </RCC>

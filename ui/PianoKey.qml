@@ -4,6 +4,7 @@ Rectangle {
     property string name: "note"
     property string nameClr: "black"
     property string borderClr: "black"
+    property real noteNum: generator.UNDEF
 
     id: note
     width: 80
@@ -26,6 +27,8 @@ Rectangle {
     function onPressedKey() {
         anchors.bottomMargin += 5
         noteText.anchors.bottomMargin += 1
+
+        generator.testMethod(0.0)
     }
     function onReleasedKey() {
         anchors.bottomMargin -= 5

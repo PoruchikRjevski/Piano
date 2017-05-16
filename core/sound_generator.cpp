@@ -10,23 +10,9 @@ SoundGenerator::~SoundGenerator()
     return;
 }
 
-void SoundGenerator::declareQML()
+void SoundGenerator::testMethod(float freq)
 {
-    qmlRegisterType<SoundGenerator>("MyQMLEnums", 1, 0, "Notess");
-
-    return;
-}
-
-void SoundGenerator::testMethod(unsigned short note)
-{
-    switch (note) {
-    case NOTE_C: {
-        qDebug() << "note c";
-    } break;
-    case NOTE_D: {
-        qDebug() << "note d";
-    } break;
-    }
+    qDebug() << "note freq: " << freq;
 
     return;
 }
