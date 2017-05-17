@@ -15,7 +15,7 @@ public:
     SoundPlayer();
     ~SoundPlayer();
 
-    void playNote(short &note, NoteData &data);
+    void playNote(NoteData &data);
     void stopNote(short &note);
 
     bool initPlayer();
@@ -29,7 +29,7 @@ private:
 
     WAVEFORMATEX _waveFormatex;
 
-    map<short, IXAudio2SourceVoice *> _sourceVoices;
+    map<short, NoteData> _sourceVoices;
 };
 
 #endif // SOUND_PLAYER_H

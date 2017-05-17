@@ -13,14 +13,12 @@ SoundManager::~SoundManager()
 void SoundManager::genNote(short note)
 {
     NoteData curData = {};
-    float freq = this->getNoteFrequency(note);
+    curData._note = note;
+    curData._freq = this->getNoteFrequency(note);
 
-    qDebug() << "freq: " << freq;
+    WaveGenerator::genNoteData(curData);
 
-    WaveGenerator::genNoteData(curData, freq);
-//    this->genNoteData(curData, freq);
-
-    this->_player->playNote(note, curData);
+    this->_player->playNote(curData);
 
     return;
 }

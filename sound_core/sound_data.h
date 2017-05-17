@@ -3,16 +3,21 @@
 
 #include "xaudio2.h"
 
-#define BUFFER_SIZE         88200
+#define BUFFER_SIZE         882000
 #define SAMPLE_RATE         44100
 #define CHANNELS            2
 #define SAMPLE_BITS         32
 #define BYTE_S              8
-#define FREQ_STEREO_SHIFT   2
+#define FREQ_STEREO_SHIFT   2 // shift in Hz for stereo effect
+                              // and for polyphonic sample
+#define SUSTAIN_EXP_POW     -0.0005f
 
 struct NoteData {
+    short _note;
     unsigned long _dataSize = BUFFER_SIZE;
-    float _data[BUFFER_SIZE];
+    float *_data;
+    float _freq;
+    IXAudio2SourceVoice *_voice;
 };
 
 #endif // SOUND_DATA_H

@@ -12,15 +12,14 @@ SoundPlayer::~SoundPlayer()
     return;
 }
 
-void SoundPlayer::playNote(short &note, NoteData &data)
+void SoundPlayer::playNote(NoteData &data)
 {
-    this->_masterVoice->SetVolume(0.001);
+    this->_masterVoice->SetVolume(1);
 
-    IXAudio2SourceVoice *voice = nullptr;
     XAUDIO2_BUFFER aBuffer = {};
 
     // create source voice
-    if (FAILED(this->_engine->CreateSourceVoice(&voice, &this->_waveFormatex))) {
+    if (FAILED(this->_engine->CreateSourceVoice(&data._voice, &this->_waveFormatex))) {
         return;
     }
 
@@ -28,16 +27,17 @@ void SoundPlayer::playNote(short &note, NoteData &data)
     aBuffer.AudioBytes = data._dataSize * SAMPLE_BITS / BYTE_S;
     aBuffer.pAudioData = reinterpret_cast<BYTE *>(data._data);
     aBuffer.Flags = XAUDIO2_END_OF_STREAM;
-    aBuffer.LoopCount = XAUDIO2_LOOP_INFINITE;
+    aBuffer.LoopCount = XAUDIO2_NO_LOOP_REGION;
+//    aBuffer.LoopCount = XAUDIO2_LOOP_INFINITE;
 
     // submit buffer to source
-    if (FAILED(voice->SubmitSourceBuffer(&aBuffer))) {
+    if (FAILED(data._voice->SubmitSourceBuffer(&aBuffer))) {
         return;
     }
 
-    voice->Start(0);
+    data._voice->Start();
 
-    this->_sourceVoices.insert(pair<short, IXAudio2SourceVoice *>(note, voice));
+    this->_sourceVoices.insert(pair<short, NoteData>(data._note, data));
 
     return;
 }
@@ -47,9 +47,11 @@ void SoundPlayer::stopNote(short &note)
     auto it = this->_sourceVoices.find(note);
 
     if (it != this->_sourceVoices.end()) {
-        it->second->Stop();
-        it->second->FlushSourceBuffers();
-        it->second->DestroyVoice();
+        it->second._voice->Stop();
+        it->second._voice->FlushSourceBuffers();
+        it->second._voice->DestroyVoice();
+
+        delete [] it->second._data;
 
         this->_sourceVoices.erase(it);
     }
