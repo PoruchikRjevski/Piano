@@ -1,6 +1,8 @@
 QT += qml quick widgets
 CONFIG += c++14
 
+TARGET = Piano
+
 CONFIG(release, debug|release) {
     DESTDIR = ../qml_test-bin/
 }
@@ -16,7 +18,8 @@ LIBS += -lole32
 
 SOURCES += main.cpp \
     sound_core/sound_player.cpp \
-    sound_core/sound_manager.cpp
+    sound_core/sound_manager.cpp \
+    sound_core/wave_generator.cpp
 
 HEADERS += \
     sound_core/sound_player.h \

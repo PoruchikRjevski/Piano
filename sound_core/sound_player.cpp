@@ -14,6 +14,8 @@ SoundPlayer::~SoundPlayer()
 
 void SoundPlayer::playNote(short &note, NoteData &data)
 {
+    this->_masterVoice->SetVolume(0.001);
+
     IXAudio2SourceVoice *voice = nullptr;
     XAUDIO2_BUFFER aBuffer = {};
 

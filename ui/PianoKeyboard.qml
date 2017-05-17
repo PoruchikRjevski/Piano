@@ -1,14 +1,13 @@
 import QtQuick 2.7
 import QtQuick.Controls 2.1
 import QtQuick.Layouts 1.0
-import snd.manager 1.0
+import sound.environment 1.0
 
 Rectangle {
     id: keyboard
-//    property int octave: Enums.FIRST_OCTAVE
 
     function setOctave(octave) {
-        snd_manager.setCurrentOctave(octave)
+        sound_manager.setCurrentOctave(octave)
     }
 
     Component.onCompleted: {
@@ -179,6 +178,10 @@ Rectangle {
     }
 
     Keys.onPressed: {
+        if (event.isAutoRepeat) {
+            return
+        }
+
         switch (event.key) {
         case Qt.Key_A: {
             noteCKey.onPressedKey()
@@ -217,8 +220,14 @@ Rectangle {
             noteDiez5.onPressedKey()
         } break
         }
+
+        event.accepted = true
     }
     Keys.onReleased: {
+        if (event.isAutoRepeat) {
+            return
+        }
+
         switch (event.key) {
         case Qt.Key_A: {
             noteCKey.onReleasedKey()

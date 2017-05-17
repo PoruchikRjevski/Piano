@@ -1,5 +1,5 @@
 import QtQuick 2.7
-import snd.manager 1.0
+import sound.environment 1.0
 
 Rectangle {
     property string name: "note"
@@ -29,13 +29,13 @@ Rectangle {
         anchors.bottomMargin += 5
         noteText.anchors.bottomMargin += 1
 
-        snd_manager.genNote(note)
+        sound_manager.genNote(note)
     }
     function onReleasedKey() {
         anchors.bottomMargin -= 5
         noteText.anchors.bottomMargin -= 1
 
-        snd_manager.delNote(note)
+        sound_manager.delNote(note)
     }
 
     MouseArea {

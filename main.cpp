@@ -18,9 +18,8 @@ int main(int argc, char *argv[])
     }
 
     QQuickView viewer;
-//    generator.registerMetaQml();
-    qmlRegisterType<SoundManager>("snd.manager", 1, 0, "Enums");
-    viewer.rootContext()->setContextProperty("snd_manager", &manager);
+    qmlRegisterType<SoundManager>("sound.environment", 1, 0, "Enums");
+    viewer.rootContext()->setContextProperty("sound_manager", &manager);
     viewer.setSource(QUrl("qrc:/ui/main.qml"));
     viewer.show();
 
