@@ -4,7 +4,7 @@
 #include <QtQml/QQmlContext>
 #include <QtQuick/QQuickView>
 
-#include "core/sound_manager.h"
+#include "sound_core/sound_manager.h"
 
 int main(int argc, char *argv[])
 {

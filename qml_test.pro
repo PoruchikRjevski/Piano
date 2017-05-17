@@ -15,14 +15,14 @@ LIBS += -L"C:/Program Files (x86)/Microsoft DirectX SDK (June 2010)/Lib/x86"
 LIBS += -lole32
 
 SOURCES += main.cpp \
-    core/sound_player.cpp \
-    core/sound_manager.cpp
+    sound_core/sound_player.cpp \
+    sound_core/sound_manager.cpp
 
 HEADERS += \
-    core/sound_player.h \
-    core/sound_data.h \
-    core/sound_manager.h \
-    core/wave_generator.h
+    sound_core/sound_player.h \
+    sound_core/sound_data.h \
+    sound_core/sound_manager.h \
+    sound_core/wave_generator.h
 
 RESOURCES += qml.qrc
 
