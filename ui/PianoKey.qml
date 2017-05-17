@@ -1,5 +1,5 @@
 import QtQuick 2.7
-import sound.gen 1.0
+import snd.manager 1.0
 
 Rectangle {
     property string name: "note"
@@ -29,7 +29,7 @@ Rectangle {
         anchors.bottomMargin += 5
         noteText.anchors.bottomMargin += 1
 
-        generator.playNote(note)
+        snd_manager.addNote(note)
     }
     function onReleasedKey() {
         anchors.bottomMargin -= 5

@@ -1,14 +1,14 @@
 import QtQuick 2.7
 import QtQuick.Controls 2.1
 import QtQuick.Layouts 1.0
-import sound.gen 1.0
+import snd.manager 1.0
 
 Rectangle {
     id: keyboard
 //    property int octave: Enums.FIRST_OCTAVE
 
     function setOctave(octave) {
-        generator.setCurrentOctave(octave)
+        snd_manager.setCurrentOctave(octave)
     }
 
     Component.onCompleted: {
