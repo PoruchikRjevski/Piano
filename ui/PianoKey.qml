@@ -29,11 +29,13 @@ Rectangle {
         anchors.bottomMargin += 5
         noteText.anchors.bottomMargin += 1
 
-        snd_manager.addNote(note)
+        snd_manager.genNote(note)
     }
     function onReleasedKey() {
         anchors.bottomMargin -= 5
         noteText.anchors.bottomMargin -= 1
+
+        snd_manager.delNote(note)
     }
 
     MouseArea {

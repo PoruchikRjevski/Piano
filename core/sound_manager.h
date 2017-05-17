@@ -5,18 +5,17 @@
 #include <QDebug>
 #include <QMessageBox>
 #include <QtQml>
-#include <QVector>
-#include <QtMath>
 
 #include "xaudio2.h"
-
+#include <cmath>
 #include "sound_player.h"
+#include "wave_generator.h"
+
+using std::pow;
 
 #define NOTES_PER_OCTAVE        12
 #define NOTE_440_NUM            69
 #define NOTE_440_FREQ           440
-
-#define SAMPLE_RATE             44100
 
 class SoundManager : public QObject
 {
@@ -28,10 +27,9 @@ public:
     SoundManager(QObject *parent = 0);
     ~SoundManager();
 
-
     bool initEnvironment();
 
-    enum Octaves {
+    enum Octaves : short {
         SUB_CONTR_OCTAVE = 1,
         CONTR_OCTAVE,
         BIG_OCTAVE,
@@ -42,7 +40,7 @@ public:
         FOURTH_OCTAVE,
         FIVE_OCTAVE
     };
-    enum Notes {
+    enum Notes : short {
         UNDEF = -1,
         NOTE_C = 0,
         NOTE_C_SH,
@@ -59,38 +57,17 @@ public:
     };
 
 public slots:
-    void addNote(int note);
-
     void setCurrentOctave(int octave);
+    void genNote(short note);
+    void delNote(short note);
 
 private:
     float getNoteFrequency(int note);
-
+//    void genNoteData(NoteData &data, const float &freq);
 
     int _currentOctave;
 
-
     SoundPlayer *_player;
-
-
-    /// XAUDIO2
-    void initXAudio();
-
-//    IXAudio2 *xAudio2 = NULL;
-//    IXAudio2MasteringVoice *masteringVoice;
-//    IXAudio2SourceVoice *sourceVoice;
-//    XAUDIO2_BUFFER *aBuffer;
-
-//    static long bufferSize = 44100 * 2;
-//    short *bufferSamples;
-//    BYTE *buffer;
-
-//    XAudio2 _xAudio;
-//    IXAudio2 _xAudio;
-//    IXAudio2MasteringVoice * _masteringVoice;
-//    IXAudio2SourceVoice * _sourceVoice;
-
-
 };
 
 
