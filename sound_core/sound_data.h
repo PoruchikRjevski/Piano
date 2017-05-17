@@ -3,14 +3,14 @@
 
 #include "xaudio2.h"
 
-#define BUFFER_SIZE         882000
+#define BUFFER_SIZE         176400
 #define SAMPLE_RATE         44100
 #define CHANNELS            2
 #define SAMPLE_BITS         32
 #define BYTE_S              8
 #define FREQ_STEREO_SHIFT   2 // shift in Hz for stereo effect
                               // and for polyphonic sample
-#define SUSTAIN_EXP_POW     -0.0005f
+#define SUSTAIN_EXP_POW     -0.0001f
 
 struct NoteData {
     short _note;

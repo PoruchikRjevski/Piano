@@ -44,6 +44,8 @@ float SoundManager::getNoteFrequency(int note)
     freq /= NOTES_PER_OCTAVE;
     freq = NOTE_440_FREQ * pow(2, freq);
 
+    qDebug() << freq;
+
     return freq;
 }
 
