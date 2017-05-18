@@ -21,6 +21,8 @@ public:
     bool initPlayer();
     void deinitPlayer();
 
+    void setVolume(float volume);
+
 private:
     void initWaveFormat();
 

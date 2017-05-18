@@ -30,6 +30,41 @@ void SoundManager::delNote(short note)
     return;
 }
 
+void SoundManager::reverbOn()
+{
+    qDebug() << "reverb on";
+
+    return;
+}
+
+void SoundManager::reverbOff()
+{
+    qDebug() << "reverb off";
+
+    return;
+}
+
+void SoundManager::sustainOn()
+{
+    qDebug() << "sust on";
+
+    return;
+}
+
+void SoundManager::sustainOff()
+{
+    qDebug() << "sust off";
+
+    return;
+}
+
+void SoundManager::changeVolume(float volume)
+{
+    this->_player->setVolume(volume);
+
+    return;
+}
+
 void SoundManager::setCurrentOctave(int octave)
 {
     this->_currentOctave = octave;
@@ -49,27 +84,32 @@ float SoundManager::getNoteFrequency(int note)
     return freq;
 }
 
-//void SoundManager::genNoteData(NoteData &data, const float &freq)
-//{
-//    for (unsigned long i = 0; i < data._dataSize; i += 2) {
-//        data._data[i] = sin(i * 2 * M_PI * freq / SAMPLE_RATE);
-//        data._data[i + 1] = data._data[i];
-////        buffer._data[i + 1] = sin(i * 2 * M_PI * (freq + 1) / SAMPLE_RATE);
-//    }
-
-//    return;
-//}
-
 bool SoundManager::initEnvironment()
 {
     this->_player = new SoundPlayer();
     if (!this->_player->initPlayer()) {
         QMessageBox errorMsg;
-        errorMsg.critical(0,"Error","Can't init XAudio2 instruments!");
+        errorMsg.critical(0,
+                          "Error",
+                          "Can't init XAudio2 instruments!");
         errorMsg.show();
 
         return false;
     }
 
     return true;
+}
+
+void SoundManager::setQmlViewerPtr(QQuickView *view)
+{
+    this->_qmlViewer = view;
+
+    return;
+}
+
+void SoundManager::closeApp()
+{
+    this->_qmlViewer->close();
+
+    return;
 }

@@ -5,17 +5,18 @@
 #include <QDebug>
 #include <QMessageBox>
 #include <QtQml>
+#include <QQuickView>
 
 #include "xaudio2.h"
 #include <cmath>
 #include "sound_player.h"
 #include "wave_generator.h"
 
-using std::pow;
+QT_BEGIN_NAMESPACE
+class QQuickView;
+QT_END_NAMESPACE
 
-#define NOTES_PER_OCTAVE        12
-#define NOTE_440_NUM            69
-#define NOTE_440_FREQ           440
+using std::pow;
 
 class SoundManager : public QObject
 {
@@ -29,6 +30,8 @@ public:
 
     bool initEnvironment();
 
+    void setQmlViewerPtr(QQuickView *view);
+
     enum Octaves : short {
         SUB_CONTR_OCTAVE = 1,
         CONTR_OCTAVE,
@@ -38,7 +41,7 @@ public:
         SEC_OCTAVE,
         THIRD_OCTAVE,
         FOURTH_OCTAVE,
-        FIVE_OCTAVE
+        FIVES_OCTAVE
     };
     enum Notes : short {
         UNDEF = -1,
@@ -57,17 +60,28 @@ public:
     };
 
 public slots:
+    void closeApp();
+
     void setCurrentOctave(int octave);
     void genNote(short note);
     void delNote(short note);
 
+    void reverbOn();
+    void reverbOff();
+
+    void sustainOn();
+    void sustainOff();
+
+    void changeVolume(float volume);
+
 private:
     float getNoteFrequency(int note);
-//    void genNoteData(NoteData &data, const float &freq);
 
     int _currentOctave;
 
     SoundPlayer *_player;
+
+    QQuickView *_qmlViewer;
 };
 
 

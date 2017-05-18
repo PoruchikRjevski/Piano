@@ -14,8 +14,6 @@ SoundPlayer::~SoundPlayer()
 
 void SoundPlayer::playNote(NoteData &data)
 {
-    this->_masterVoice->SetVolume(1);
-
     XAUDIO2_BUFFER aBuffer = {};
 
     // create source voice
@@ -28,7 +26,6 @@ void SoundPlayer::playNote(NoteData &data)
     aBuffer.pAudioData = reinterpret_cast<BYTE *>(data._data);
     aBuffer.Flags = XAUDIO2_END_OF_STREAM;
     aBuffer.LoopCount = XAUDIO2_NO_LOOP_REGION;
-//    aBuffer.LoopCount = XAUDIO2_LOOP_INFINITE;
 
     // submit buffer to source
     if (FAILED(data._voice->SubmitSourceBuffer(&aBuffer))) {
@@ -87,6 +84,13 @@ void SoundPlayer::deinitPlayer()
     this->_engine->Release();
 
     CoUninitialize();
+
+    return;
+}
+
+void SoundPlayer::setVolume(float volume)
+{
+    this->_masterVoice->SetVolume(volume);
 
     return;
 }

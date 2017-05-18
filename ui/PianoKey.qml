@@ -8,13 +8,12 @@ Rectangle {
     property int note: Enums.UNDEF
 
     id: key
-    width: 80
+    width: 60;
+    height: 200;
     color: "white"
     border.width: 1
     border.color: borderClr
-    radius: 5
-
-    anchors.topMargin: -10
+    radius: 10
 
     Text {
         id: noteText
@@ -27,12 +26,14 @@ Rectangle {
 
     function onPressedKey() {
         anchors.bottomMargin += 5
+        key.border.width = 2;
         noteText.anchors.bottomMargin += 1
 
         sound_manager.genNote(note)
     }
     function onReleasedKey() {
         anchors.bottomMargin -= 5
+        key.border.width = 1;
         noteText.anchors.bottomMargin -= 1
 
         sound_manager.delNote(note)
