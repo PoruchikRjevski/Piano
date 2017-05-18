@@ -29,10 +29,22 @@ Item {
         anchors.rightMargin: 50
 
         Keys.onPressed: {
+            if (event.isAutoRepeat) {
+                return
+            }
+
             keyboard.pressKeyFunc(event.key)
+
+            event.accepted = true
         }
         Keys.onReleased: {
+            if (event.isAutoRepeat) {
+                return
+            }
+
             keyboard.releaseKeyFunc(event.key)
+
+            event.accepted = true
         }
     }
 
