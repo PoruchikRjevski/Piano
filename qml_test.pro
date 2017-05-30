@@ -3,14 +3,14 @@ CONFIG += c++14
 
 TARGET = Piano
 
-CONFIG(release, debug|release) {
-    DESTDIR = ../qml_test-bin/
+CONFIG(debug, debug|release) {
+    DEFINES += DEBUG_BUILD
 }
 
-#INCLUDEPATH += "C:/Program Files (x86)/Windows Kits/8.1/Include/um"
-#LIBS += -L"C:/Program Files (x86)/Windows Kits/8.1/Lib/winv6.3/um/x86"
+CONFIG(release, debug|release) {
+    DESTDIR = ../qml_test-bin/
 
-
+}
 
 INCLUDEPATH += "C:/Program Files (x86)/Microsoft DirectX SDK (June 2010)/Include"
 LIBS += -L"C:/Program Files (x86)/Microsoft DirectX SDK (June 2010)/Lib/x86"

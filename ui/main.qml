@@ -81,6 +81,4 @@ Item {
             event.accepted = true
         }
     }
-
-
 }

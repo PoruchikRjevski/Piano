@@ -1,5 +1,5 @@
-#ifndef SOUND_GENERATOR_H
-#define SOUND_GENERATOR_H
+#ifndef SOUND_MANAGER_H
+#define SOUND_MANAGER_H
 
 #include <QObject>
 #include <QDebug>
@@ -85,4 +85,4 @@ private:
 };
 
 
-#endif // SOUND_GENERATOR_H
+#endif // SOUND_MANAGER_H

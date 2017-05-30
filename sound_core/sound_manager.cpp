@@ -30,30 +30,42 @@ void SoundManager::delNote(short note)
     return;
 }
 
+/// @todo: switch on reverberation
 void SoundManager::reverbOn()
 {
+#ifdef DEBUG_BUILD
     qDebug() << "reverb on";
+#endif
 
     return;
 }
 
+/// @todo: switch off reverberation
 void SoundManager::reverbOff()
 {
+#ifdef DEBUG_BUILD
     qDebug() << "reverb off";
+#endif
 
     return;
 }
 
+/// @todo: switch on sustain
 void SoundManager::sustainOn()
 {
-    qDebug() << "sust on";
+#ifdef DEBUG_BUILD
+    qDebug() << "sustain on";
+#endif
 
     return;
 }
 
+/// @todo: switch off sustain
 void SoundManager::sustainOff()
 {
-    qDebug() << "sust off";
+#ifdef DEBUG_BUILD
+    qDebug() << "sustain off";
+#endif
 
     return;
 }
@@ -79,7 +91,9 @@ float SoundManager::getNoteFrequency(int note)
     freq /= NOTES_PER_OCTAVE;
     freq = NOTE_440_FREQ * pow(2, freq);
 
-    qDebug() << freq;
+#ifdef DEBUG_BUILD
+    qDebug() << "freq: " << freq;
+#endif
 
     return freq;
 }
